@@ -9,8 +9,7 @@ df = pd.read_excel("./data/ipo_cleaned.xlsx")
 
 # print(df.shape)
 
-x = df.drop(columns = ['Date', 'List Price', 'Listing Gain', "RII","Offer Price","Day"
-    ])
+x = df.drop(columns = ['Date', 'List Price', 'Listing Gain', "Day", "Month","RII","Offer Price",])
 y = df['Listing Gain']
 
 # print(x.head(4))
@@ -57,11 +56,8 @@ feature_names = [
     "Issue_Size(crores)",
     "QIB",
     "HNI",
-    "Total",
-    
+    "Total",   
     "Year",
-    "Month",
-    
 ]
 
 importance = pd.DataFrame({
