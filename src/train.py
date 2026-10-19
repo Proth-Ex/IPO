@@ -9,9 +9,11 @@ df = pd.read_excel("./data/ipo_cleaned.xlsx")
 
 # print(df.shape)
 
-x = df.drop(columns = ['Date', 'List Price', 'Listing Gain'])
+x = df.drop(columns = ['Date', 'List Price', 'Listing Gain', "RII","Offer Price","Day"
+    ])
 y = df['Listing Gain']
 
+# print(x.head(4))
 # print(x.shape)
 # print(y.shape)
 
@@ -50,3 +52,28 @@ r2 = r2_score(y_test, y_pred)
 print(f"mae : {mae:.2f}")
 print(f"mse : {mse:.2f}")
 print(f"r2 : {r2:.2f}")
+
+feature_names = [
+    "Issue_Size(crores)",
+    "QIB",
+    "HNI",
+    "Total",
+    
+    "Year",
+    "Month",
+    
+]
+
+importance = pd.DataFrame({
+    "Features": feature_names,
+    "Coefficients": model.coef_
+})
+
+importance['Absolute Coefficients'] = importance["Coefficients"].abs()
+
+importance = importance.sort_values(
+    by="Absolute Coefficients",
+    ascending=False
+)
+
+print(importance.to_string(index=False))

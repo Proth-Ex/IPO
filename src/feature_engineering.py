@@ -7,7 +7,7 @@ df['Year'] = date.dt.year
 df['Month'] = date.dt.month
 df['Day'] = date.dt.day_of_week
 
-df.to_excel("./data/ipo_cleaned.xlsx")
+df.to_excel("./data/ipo_cleaned.xlsx", index=False)
 print("Saved extracted data")
 
 # print(df.head())
