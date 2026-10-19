@@ -28,7 +28,7 @@ X_test_scaled = scaler.transform(X_test)
 
 
 model = LinearRegression()
-model.fit(X_train, y_train)
+model.fit(X_train_scaled, y_train)
 
 #saving the models and scaller to pkl(serialised[byte stream])
 joblib.dump(model, "./models/ipo_model.pkl")
@@ -37,3 +37,16 @@ joblib.dump(scaler, "./models/scaler.pkl")
 print("Training completed and model saved to Models/ipo_model")
 
 
+y_pred = model.predict(X_test_scaled)
+
+print("Model predictions complete")
+
+#calc the errors
+
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f"mae : {mae:.2f}")
+print(f"mse : {mse:.2f}")
+print(f"r2 : {r2:.2f}")
