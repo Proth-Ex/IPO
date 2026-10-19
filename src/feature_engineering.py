@@ -10,4 +10,4 @@ df['Day'] = date.dt.day_of_week
 df.to_excel("./data/ipo_cleaned.xlsx")
 print("Saved extracted data")
 
-print(df.head())
+# print(df.head())
